@@ -29,12 +29,12 @@ export default function Home() {
             <HowPage />
           </div>
         </div>
-        <div className="w-full flex justify-center px-8 sm:px-20 py-20 bg-[#F1F2F4]">
+        <div className="w-full flex justify-center px-8 sm:px-20 py-10 bg-[#F1F2F4]">
           <div className="w-full max-w-7xl flex flex-col items-center font-[family-name:var(--font-geist-sans)]">
             <Talents />
           </div>
         </div>
-        <div className="w-full flex justify-center px-8 sm:px-20 pb-20">
+        <div className="w-full flex justify-center px-8 sm:px-20 pb-10">
           <div className="w-full max-w-7xl flex flex-col items-center font-[family-name:var(--font-geist-sans)]">
             <Jobs />
           </div>

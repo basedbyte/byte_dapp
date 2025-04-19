@@ -37,10 +37,12 @@ const Onboarding = () => {
           </div>
           
           {/* Employers CTA */}
-          <div className="text-center sm:text-left mt-4">
-            <p className="text-gray-600 text-xs sm:text-sm">
-              Employers? <Link href="/postjob" className="text-purple-600 font-medium">Post your job here</Link>
-            </p>
+          <div className="flex justify-center mt-4">
+            <div className="text-center">
+              <p className="text-gray-600 text-xs sm:text-sm">
+                Employers? <Link href="/postjob" className="text-purple-600 font-medium">Post your job here</Link>
+              </p>
+            </div>
           </div>
         </div>
         
