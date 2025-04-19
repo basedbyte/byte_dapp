@@ -20,7 +20,7 @@ const Navbar = () => {
 
                 <div className="flex items-center">
                 <h1 className="text-xl font-bold">
-                    <Link href="/" className="text-green-500 font-righteous">BYTE</Link>
+                    <Link href="/" className="text-green-500 font-[family-name:var(--font-righteous)]">BYTE</Link>
                 </h1>
                 </div>
                 
