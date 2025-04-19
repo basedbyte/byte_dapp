@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Navbar from "../components/homePage/navbar";
 
-import Onboarding from "../components/homePage/onboarding";
+import Onboarding from "../components/homePage/frontPage";
 import Features from "../components/homePage/featurePage";
 import HowPage from "@/components/homePage/howPage";
 import Talents from "@/components/homePage/talentsPage";
