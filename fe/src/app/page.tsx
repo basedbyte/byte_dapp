@@ -6,6 +6,7 @@ import Features from "../components/homePage/featurePage";
 import HowPage from "@/components/homePage/howPage";
 import Talents from "@/components/homePage/talentsPage";
 import Jobs from "@/components/homePage/jobsPage";
+import Footer from "@/components/homePage/footer";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -40,6 +41,9 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <footer>
+        <Footer/>
+      </footer>
     </div>
   );
 }

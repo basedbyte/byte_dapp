@@ -115,8 +115,13 @@ const Jobs = () => {
               </button>
 
               {/* Profile */}
-              <div className={`w-10 h-10 rounded-lg ${job.logoColor} text-white flex items-center justify-center mb-4`}>
-                {job.company.charAt(0)}
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-10 h-10 rounded-lg ${job.logoColor} text-white flex items-center justify-center`}>
+                  {job.company.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">{job.company}</p>
+                </div>
               </div>
 
               {/* Job details */}
@@ -127,7 +132,7 @@ const Jobs = () => {
 
               {/* Apply button and tags */}
               <div className="flex items-center justify-between">
-                <div className="flex gap-2">
+                <div className="flex gap-2 font-bold">
                   <button className="hover:bg-[#0C9653] hover:text-white px-4 py-1 border border-[#0C9653] text-[#0C9653] rounded-full text-sm ">
                     Apply
                   </button>
