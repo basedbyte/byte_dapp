@@ -10,7 +10,7 @@ const HowPage = () => {
         <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10 relative'>
 
           {/* Step 1 */}
-          <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] transition-all duration-200 flex flex-col items-center justify-center text-center'>
+          <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
               <img src="/assets/howpageAssets/Icon.png" alt="Create Account" className="group-hover:opacity-0 transition-opacity duration-200" />
               <img src="/assets/howpageAssets/Icon (1).png" alt="Create Account Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -30,7 +30,7 @@ const HowPage = () => {
           </div>
 
           {/* Step 3 */}
-          <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] transition-all duration-200 flex flex-col items-center justify-center text-center'>
+          <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
               <img src="/assets/howpageAssets/Icon (6).png" alt="Connect" className="group-hover:opacity-0 transition-opacity duration-200" />
               <img src="/assets/howpageAssets/Icon (7).png" alt="Connect Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -40,7 +40,7 @@ const HowPage = () => {
           </div>
 
           {/* Step 4 */}
-          <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] transition-all duration-200 flex flex-col items-center justify-center text-center'>
+          <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
               <img src="/assets/howpageAssets/Icon (2).png" alt="Get Paid" className="group-hover:opacity-0 transition-opacity duration-200" />
               <img src="/assets/howpageAssets/Icon (3).png" alt="Get Paid Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
