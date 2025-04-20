@@ -27,6 +27,7 @@ const Navbar = () => {
                 <div className="hidden md:flex justify-center space-x-8">
                 <Link href="/findjob" className="text-gray-600 font-medium hover:text-green-500">Find Job</Link>
                 <Link href="/talents" className="text-gray-600 hover:text-green-500">Browse Talents</Link>
+                <Link href="/about" className="text-gray-600 hover:text-green-500">About</Link>
                 </div>
                 
                 <div className="hidden md:flex items-center justify-end">
