@@ -11,23 +11,23 @@ const Onboarding = () => {
         <div className="space-y-4 sm:space-y-6 md:pb-0 pb-6">
           <div className="flex items-center space-x-2">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-dark-green">
-              Connect, Work,<br />
-              And Grow<br />
-              One Task At A Time.
+            Find Talent. Post <br/>
+             Tasks. Get Paid in<br/> <span className='text-[#00E676]'>Crypto.</span>
             </h1>
           </div>
           
           <p className="text-gray-700 text-sm sm:text-base md:text-lg">
-            Connect With Leading Freelancers And<br className="hidden sm:block" />
-            Trusted Clients To Bring Your Next Project To Life.
+          Connect with global clients, complete tasks, <br className="hidden sm:block" />
+          and get paid securely in cryptocurrency <br/>
+          all on a decentralized platform.  
           </p>
           
           {/* Search Bar */}
           <div className="relative mt-4 sm:mt-6 md:mt-8">
             <input 
               type="text" 
-              placeholder="Job title, Keyword..." 
-              className="w-full py-2 sm:py-3 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Search jobs, talent, or skills..." 
+              className="w-full py-2 sm:py-3 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-md"
             />
             <button className="absolute right-2 top-1 sm:top-1.5 bg-green-500 text-white p-1.5 sm:p-2 rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -47,7 +47,7 @@ const Onboarding = () => {
         </div>
         
         {/*Right*/}
-        <div className="bg-gray-200 rounded-lg w-full h-48 sm:h-64 md:h-full flex items-center justify-center">
+        <div className="bg-gray-200 rounded-lg w-full h-48 sm:h-64 md:h-full flex items-center justify-center shadow-md">
           <p className="text-gray-500 text-sm sm:text-base">Platform Interface Preview</p>
         </div>
       </div>
