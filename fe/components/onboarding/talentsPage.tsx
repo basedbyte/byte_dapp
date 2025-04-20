@@ -16,7 +16,7 @@ const CategoryGrid = () => {
   return (
     <div className="w-full px-4 py-4">
         <div className='flex items-start mb-8'>
-          <h1 className='text-4xl font-bold'>Browse Talent By Category</h1>
+          <h1 className='text-[32px] font-bold'>Browse Talent By Category</h1>
         </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 

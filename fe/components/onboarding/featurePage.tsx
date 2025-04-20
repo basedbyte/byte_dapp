@@ -7,7 +7,7 @@ const FeaturePage = () => {
     <div className="w-full px-4 py-6 sm:px-6 md:px-8 lg:px-12 xl:py-12">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-6 lg:gap-12 items-center justify-center">
         {/* Left */}
-        <div className="order-2 md:order-1 w-full md:w-1/2 bg-gray-200 rounded-lg h-64 sm:h-72 md:h-80 lg:h-96 flex items-center justify-center">
+        <div className="order-2 md:order-1 w-full md:w-1/2 bg-gray-200 rounded-lg h-64 sm:h-72 md:h-80 lg:h-96 flex items-center justify-center shadow-md">
           <p className="text-gray-400 text-sm sm:text-base">Platform Interface Preview</p>
         </div>
 
