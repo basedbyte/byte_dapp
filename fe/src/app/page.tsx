@@ -1,13 +1,13 @@
 "use client";
-import Image from "next/image";
-import Navbar from "../../components/onboarding/navbar";
-import Onboarding from "../../components/onboarding/frontPage";
-import Features from "../../components/onboarding/featurePage";
-import HowPage from "../../components/onboarding/howPage";
-import Talents from "../../components/onboarding/talentsPage";
-import Jobs from "../../components/onboarding/jobsPage";
-import Footer from "../../components/onboarding/footer";
-import Cards from "../../components/onboarding/cardPage";
+//import Image from "next/image";
+import Navbar from "@components/navbar";
+import Onboarding from "@components/frontPage";
+import Features from "@components/featurePage";
+import HowPage from "@components/howPage";
+import Talents from "@components/talentsPage";
+import Jobs from "@components/jobsPage";
+import Footer from "@components/footer";
+import Cards from "@components/cardPage";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen ">

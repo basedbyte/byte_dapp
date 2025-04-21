@@ -13,10 +13,10 @@ const Footer = () => {
                 <span className="text-xl sm:text-2xl font-bold">BYTE</span>
               </div>
               <div className="flex gap-4 mt-6">
-                <Link href="#"><Image src="/assets/facebook.png" alt="facebook" width={28} height={28} /></Link>
-                <Link href="#"><Image src="/assets/instagram.png" alt="Instagram" width={28} height={28} /></Link>
-                <Link href="#"><Image src="/assets/linkedin.png" alt="LinkedIn" width={28} height={28} /></Link>
-                <Link href="#"><Image src="/assets/X.png" alt="X" width={28} height={28} /></Link>
+                <Link href="#"><Image src="/assets/footerAssets/facebook.png" alt="facebook" width={28} height={28} /></Link>
+                <Link href="#"><Image src="/assets/footerAssets/instagram.png" alt="Instagram" width={28} height={28} /></Link>
+                <Link href="#"><Image src="/assets/footerAssets/linkedin.png" alt="LinkedIn" width={28} height={28} /></Link>
+                <Link href="#"><Image src="/assets/footerAssets/X.png" alt="X" width={28} height={28} /></Link>
               </div>
             </div>
 

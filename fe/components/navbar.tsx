@@ -1,6 +1,7 @@
 "use client";
+import Image from "next/image";
 import { CircleHelp, Menu, X } from 'lucide-react';
-import { useNavbar } from '../../hooks/useNavbarResponsive';
+import { useNavbar } from '../hooks/useNavbarResponsive';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -21,7 +22,7 @@ const Navbar = () => {
                 <div className="flex-shrink-0">
                     <h1 className="text-lg sm:text-xl font-bold flex items-center">
                         <Link href="/" className="text-[#00E676] font-[family-name:var(--font-righteous)] flex items-center gap-1 sm:gap-2">
-                            <img src="/assets/footerAssets/Vector (1).png" alt="logo" className="h-5 sm:h-6 w-auto" />
+                            <Image src="/assets/footerAssets/Vector (1).png" width={100} height={100} alt="logo" className="h-5 sm:h-6 w-auto" />
                             <span>BYTE</span>
                         </Link>
                     </h1>

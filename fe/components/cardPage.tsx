@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { useCardAnimation } from '../../hooks/useCardAnimation';
+import { useCardAnimation } from '../hooks/useCardAnimation';
 
 const CardPage = () => {
     const { isSlideActive, toggleSlide } = useCardAnimation();
