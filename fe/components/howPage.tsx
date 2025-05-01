@@ -1,5 +1,6 @@
 import React from 'react'
-import { Send } from 'lucide-react'
+import Image from 'next/image'
+//import { Send } from 'lucide-react'
 
 const HowPage = () => {
   return (
@@ -12,8 +13,8 @@ const HowPage = () => {
           {/* Step 1 */}
           <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
-              <img src="/assets/howpageAssets/Icon.png" alt="Create Account" className="group-hover:opacity-0 transition-opacity duration-200" />
-              <img src="/assets/howpageAssets/Icon (1).png" alt="Create Account Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon.png" alt="Create Account" className="group-hover:opacity-0 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (1).png" alt="Create Account Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
             <h2 className='text-lg font-bold mt-4'>Create Account</h2>
             <p className='text-sm text-[#767F8C] mx-4'>Sign up and showcase your skills or post a job</p>
@@ -22,8 +23,8 @@ const HowPage = () => {
           {/* Step 2 */}
           <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
-              <img src="/assets/howpageAssets/Icon (4).png" alt="Post Tasks" className="group-hover:opacity-0 transition-opacity duration-200" />
-              <img src="/assets/howpageAssets/Icon (5).png" alt="Post Tasks Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (4).png" alt="Post Tasks" className="group-hover:opacity-0 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (5).png" alt="Post Tasks Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
             <h2 className='text-lg font-bold mt-4'>Post Tasks or Find Work</h2>
             <p className='text-sm text-[#767F8C] mx-4'>Create tasks or browse available opportunities</p>
@@ -32,8 +33,8 @@ const HowPage = () => {
           {/* Step 3 */}
           <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
-              <img src="/assets/howpageAssets/Icon (6).png" alt="Connect" className="group-hover:opacity-0 transition-opacity duration-200" />
-              <img src="/assets/howpageAssets/Icon (7).png" alt="Connect Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (6).png" alt="Connect" className="group-hover:opacity-0 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (7).png" alt="Connect Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
             <h2 className='text-lg font-bold mt-4'>Connect</h2>
             <p className='text-sm text-[#767F8C] mx-4'>Find the right job or talent</p>
@@ -42,8 +43,8 @@ const HowPage = () => {
           {/* Step 4 */}
           <div className='group rounded-xl h-[224px] hover:bg-[#99F5C8] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center'>
             <div className='relative'>
-              <img src="/assets/howpageAssets/Icon (2).png" alt="Get Paid" className="group-hover:opacity-0 transition-opacity duration-200" />
-              <img src="/assets/howpageAssets/Icon (3).png" alt="Get Paid Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (2).png" alt="Get Paid" className="group-hover:opacity-0 transition-opacity duration-200" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Icon (3).png" alt="Get Paid Hover" className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
             <h2 className='text-lg font-bold mt-4'>Get Paid</h2>
             <p className='text-sm text-[#767F8C] mx-4'>Receive payment instantly upon completion</p>
@@ -52,13 +53,13 @@ const HowPage = () => {
           {/* Arrows */}
           <div className='hidden md:block'>
             <div className="absolute left-[18%] top-[20px] w-[150px] h-[80px]">
-              <img src="/assets/howpageAssets/Arrows.png" alt="arrow" className="absolute top-0 left-0" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Arrows.png" alt="arrow" className="absolute top-0 left-0" />
             </div>
             <div className="absolute left-[44%] top-[80px] w-[150px] h-[80px] z-10">
-              <img src="/assets/howpageAssets/Arrows (1).png" alt="arrow" className="absolute top-0 left-0" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Arrows (1).png" alt="arrow" className="absolute top-0 left-0" />
             </div>
             <div className="absolute left-[71%] top-[30px] w-[150px] h-[80px]">
-              <img src="/assets/howpageAssets/Arrows.png" alt="arrow" className="absolute top-0 left-0" />
+              <Image width={100} height={100} src="/assets/howpageAssets/Arrows.png" alt="arrow" className="absolute top-0 left-0" />
             </div>
           </div>
 
