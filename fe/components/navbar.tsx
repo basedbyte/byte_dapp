@@ -4,10 +4,13 @@ import { CircleHelp, Menu, X } from 'lucide-react';
 import { useNavbar } from '../hooks/useNavbarResponsive';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import AuthModal from '@components/modal';
 
 const Navbar = () => {
     const { isMenuOpen, toggleMenu } = useNavbar();
     const [mounted, setMounted] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalMode, setModalMode] = useState<'login' | 'signup'>('login');
     
     // Only render interactive elements after component mounts on client
     // to avoid hydration issues with Next.js
@@ -15,7 +18,20 @@ const Navbar = () => {
         setMounted(true);
     }, []);
 
+    const openLoginModal = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setModalMode('login');
+        setModalOpen(true);
+    };
+
+    const openSignupModal = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setModalMode('signup');
+        setModalOpen(true);
+    };
+
     return (
+        <>
         <div className="bg-white shadow-sm py-3 sm:py-4 px-4 sm:px-6 w-full relative">
             <nav className="flex justify-between items-center max-w-[1280px] mx-auto">
                 {/* Logo section */}
@@ -44,9 +60,9 @@ const Navbar = () => {
                         <CircleHelp size={18} className="lg:h-5 lg:w-5" />
                     </button>
                     <div className="h-5 w-px bg-gray-300 mx-2 lg:mx-4"></div>
-                    <Link href="/hiring" className="text-gray-700 font-medium hover:text-green-500 whitespace-nowrap">Log In</Link>
+                    <a href="#" onClick={openLoginModal} className="text-gray-700 font-medium hover:text-green-500 whitespace-nowrap">Log In</a>
                     <div className="h-5 w-px bg-gray-300 mx-2 lg:mx-4"></div>
-                    <Link href="/hiring" className="text-gray-700 font-medium hover:text-green-500 whitespace-nowrap">Sign Up</Link>
+                    <a href="#" onClick={openSignupModal} className="text-gray-700 font-medium hover:text-green-500 whitespace-nowrap">Sign Up</a>
                     <div className="h-5 w-px bg-gray-300 mx-2 lg:mx-4"></div>
                     <Link href="/signin" className="bg-black text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-full font-medium hover:bg-gray-800 whitespace-nowrap text-sm">Post Task</Link>
                 </div>
@@ -74,15 +90,23 @@ const Navbar = () => {
                         <Link href="/blog" className="text-gray-600 font-bold hover:text-green-500 py-1.5">Blog</Link>
                         <Link href="/about" className="text-gray-600 font-bold hover:text-green-500 py-1.5">About</Link>
                         <div className="flex items-center py-1.5">
-                            <Link href="/hiring" className="text-gray-700 font-medium hover:text-green-500">Log In</Link>
+                            <a href="#" onClick={openLoginModal} className="text-gray-700 font-medium hover:text-green-500">Log In</a>
                             <div className="h-4 w-px bg-gray-300 mx-3"></div>
-                            <Link href="/hiring" className="text-gray-700 font-medium hover:text-green-500">Sign Up</Link>
+                            <a href="#" onClick={openSignupModal} className="text-gray-700 font-medium hover:text-green-500">Sign Up</a>
                         </div>
                         <Link href="/signin" className="bg-black text-white px-4 py-2 rounded-full font-medium hover:bg-gray-800 inline-block text-center w-full sm:w-auto">Post Task</Link>
                     </div>
                 </div>
             )}
         </div>
+        {mounted && (
+            <AuthModal 
+                isOpen={modalOpen} 
+                onClose={() => setModalOpen(false)} 
+                mode={modalMode} 
+            />
+        )}
+        </>
     );
 };
 
