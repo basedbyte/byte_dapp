@@ -9,17 +9,17 @@ interface MainViewProps {
 const MainView = ({ mode, onViewChange }: MainViewProps) => {
   return (
     <div className="w-full flex flex-col items-center px-2 sm:px-4 md:px-8">
-      <div className="mb-2">
-        <div className="w-14 h-14 flex items-center justify-center">
-          <Image src="/assets/footerAssets/Vector (1).png" width={28} height={28} alt="BYTE logo" />
+      <div className="mb-6">
+        <div className="w-24 h-24 flex items-center justify-center">
+          <Image src="/assets/footerAssets/Vector (1).png" width={64} height={64} alt="BYTE logo" />
         </div>
       </div>
 
-      <h2 className="text-xl sm:text-2xl font-bold md:text-3xl text-black text-center mb-8">
+      <h2 className="text-xl sm:text-2xl font-bold md:text-3xl text-black text-center mb-10">
         {mode === "login" ? "Log in to your account" : "Create a new account"}
       </h2>
 
-      <div className="w-full flex flex-col items-center space-y-3">
+      <div className="w-full flex flex-col items-center space-y-6">
         {["Google", "Twitter", "Discord", "GitHub"].map((provider) => (
           <button
             key={provider}
@@ -27,8 +27,8 @@ const MainView = ({ mode, onViewChange }: MainViewProps) => {
           >
             <Image
               src={`/assets/modalAssets/${provider}.png`}
-              width={20}
-              height={20}
+              width={30 }
+              height={30}
               alt={provider}
               className="mr-3"
             />
@@ -42,8 +42,8 @@ const MainView = ({ mode, onViewChange }: MainViewProps) => {
         >
           <Image
             src="/assets/modalAssets/MoreOp.png"
-            width={20}
-            height={20}
+            width={30}
+            height={30}
             alt="More Options"
             className="mr-3"
           />
