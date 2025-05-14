@@ -77,13 +77,13 @@ const MoreOptionsView = ({
         </button>
       </div>
 
-      <div className="mb-2">
+      <div className="mb-10 ">
         <div className="w-14 h-14 flex items-center justify-center">
-          <Image src="/assets/footerAssets/Vector (1).png" width={28} height={28} alt="BYTE logo" />
+          <Image src="/assets/footerAssets/Vector (1).png" width={64} height={64} alt="BYTE logo" />
         </div>
       </div>
 
-      <h2 className="text-xl text-black text-center mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold md:text-3xl text-black text-center mb-10">
         {mode === "login" ? "Log in to your account" : "Create a new account"}
       </h2>
 

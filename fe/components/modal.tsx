@@ -50,11 +50,11 @@
 
     return (
       <div
-        className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 backdrop-blur-sm  bg-opacity-50 z-50 flex items-center justify-center p-4"
         onClick={handleBackgroundClick}
       >
-        <div className={`bg-white rounded-xl shadow-xl w-full transition-all duration-300
-            ${isRoleSelection ? "max-w-5xl " : "max-w-[500px]"} h-[600px] overflow-hidden`}>
+        <div className={`bg-white rounded-xl shadow-xl w-full transition-all duration-300 
+            ${isRoleSelection ? "max-w-6xl " : "max-w-[600px]"} h-[650px] lg:h-[750px] overflow-hidden`}>
           <div className="p-8 flex flex-col items-center justify-center w-full h-full">
             {currentView === "main" && (
               <MainView mode={mode} onViewChange={setCurrentView} />
