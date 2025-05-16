@@ -5,6 +5,7 @@ import Navbar from '@components/navbar'
 import { MessageSquare, Clock, X } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useAccount } from 'wagmi';
 
 interface Bounty {
   id: number
@@ -68,8 +69,11 @@ const sampleBounties: Bounty[] = [
   }
 ]
 
+const REQUIRED_BITS = 200;
+
 const Page = () => {
   const router = useRouter()
+  const { address } = useAccount(); // get wallet address
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBounty, setSelectedBounty] = useState<Bounty | null>(null)
 
@@ -79,15 +83,23 @@ const Page = () => {
   }
 
   const handlePayBits = () => {
-    // Here you would implement the actual payment logic
-    console.log('Processing payment of 200 bits for bounty:', selectedBounty?.id)
-    
-    // Close the modal and redirect as if payment was successful
-    setIsModalOpen(false)
-    if (selectedBounty) {
-      router.push(`/earn-bounties/${selectedBounty.id}?title=${encodeURIComponent(selectedBounty.title)}&reward=${selectedBounty.reward}&due=${selectedBounty.due}&comments=${selectedBounty.comments}`)
+    if (!address) {
+      alert("Connect your wallet first!");
+      return;
     }
-  }
+    const storedBits = Number(localStorage.getItem(`bits_${address}`) ?? "0");
+    if (storedBits < REQUIRED_BITS) {
+      alert("Not enough bits to unlock this bounty.");
+      return;
+    }
+
+    localStorage.setItem(`bits_${address}`, (storedBits - REQUIRED_BITS).toString());
+
+    setIsModalOpen(false);
+    if (selectedBounty) {
+      router.push(`/earn-bounties/${selectedBounty.id}?title=${encodeURIComponent(selectedBounty.title)}&reward=${selectedBounty.reward}&due=${selectedBounty.due}&comments=${selectedBounty.comments}`);
+    }
+  };
 
   return (
     <div className="bg-[#FAFAFA] min-h-screen font-sans">

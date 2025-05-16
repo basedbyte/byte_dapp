@@ -150,6 +150,7 @@ const Profile = ({ mode, onViewChange }: ProfileProps) => {
           <button
             type="submit"
             className="w-50 mt-3 lg:w-100 lg:mt-5 mx-auto block bg-green-600 text-white font-semibold rounded-md py-2 hover:bg-green-700 transition text-xs lg:text-base lg:py-3"
+            onClick={() => window.location.reload()}
           >
             Create Profile
           </button>

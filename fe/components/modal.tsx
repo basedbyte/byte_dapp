@@ -50,7 +50,7 @@
 
     return (
       <div
-        className="fixed inset-0 backdrop-blur-sm  bg-opacity-50 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 backdrop-blur-sm bg-opacity-50 z-50 flex items-center justify-center p-4"
         onClick={handleBackgroundClick}
       >
         <div className={`bg-white rounded-xl shadow-xl w-full transition-all duration-300 

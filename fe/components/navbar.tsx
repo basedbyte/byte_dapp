@@ -3,21 +3,73 @@
 import Image from "next/image";
 import { CircleHelp, Menu, X, Wallet, UserCircle2 } from 'lucide-react';
 import { useNavbar } from '../hooks/useNavbarResponsive';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AuthModal from '@components/modal';
+import { useRouter } from "next/navigation";
+import {
+  WalletDropdownDisconnect
+} from "@coinbase/onchainkit/wallet";
+import SwapComponents from "./swapAccounts";
+import { useAccount } from 'wagmi';
+
 
 const Navbar = () => {
     const { isMenuOpen, toggleMenu } = useNavbar();
+    const [bits, setBits] = useState(0);
     const [mounted, setMounted] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalMode, setModalMode] = useState<'login' | 'signup'>('login');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [walletDropdownOpen, setWalletDropdownOpen] = useState(false);
+    const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+    const walletDropdownRef = useRef<HTMLDivElement>(null);
+    const userDropdownRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+    const { address } = useAccount();
+
+    useEffect(() => {
+        if (address) {
+            const storedBits = localStorage.getItem(`bits_${address}`);
+            setBits(storedBits ? parseInt(storedBits, 10) : 0);
+        }
+    }, [address]);
+
+    const handleLogout = () => {
+        document.cookie = "authToken=; path=/; max-age=0";
+        router.push("/");
+    };
 
     useEffect(() => {
         setMounted(true);
-        const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+        // Read authToken from cookies
+        const getCookie = (name: string) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop()?.split(';').shift();
+            return null;
+        };
+        const token = typeof window !== 'undefined' ? getCookie('authToken') : null;
         setIsLoggedIn(!!token);
+    }, []);
+
+   useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (
+                walletDropdownRef.current &&
+                !walletDropdownRef.current.contains(event.target as Node)
+            ) {
+                setWalletDropdownOpen(false);
+            }
+            if (
+                userDropdownRef.current &&
+                !userDropdownRef.current.contains(event.target as Node)
+            ) {
+                setUserDropdownOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     const openLoginModal = (e: React.MouseEvent) => {
@@ -75,12 +127,73 @@ const Navbar = () => {
                             </>
                         ) : (
                             <>
-                                <button className="text-gray-700 hover:text-green-500 p-1">
-                                    <Wallet size={20} />
-                                </button>
-                                <button className="text-gray-700 hover:text-green-500 p-1">
-                                    <UserCircle2 size={24} />
-                                </button>
+                            <div className="relative">
+                                    <button
+                                        className="text-gray-700 hover:text-green-500 p-1"
+                                        onClick={() => {
+                                            setWalletDropdownOpen((v) => !v);
+                                            setUserDropdownOpen(false); // close user dropdown if open
+                                        }}
+                                    >
+                                        <Wallet size={20} />
+                                    </button>
+                                    {walletDropdownOpen && (
+                                    <>
+                                        {/* Blurred overlay */}
+                                        <div
+                                        className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+                                        onClick={() => setWalletDropdownOpen(false)}
+                                        />
+                                        {/* Sidebar */}
+                                        <aside
+                                        ref={walletDropdownRef}
+                                        className="fixed top-0 right-0 h-full w-full sm:w-1/4 bg-white shadow-2xl z-50 transition-transform duration-300 flex flex-col"
+                                        style={{ minWidth: 300, maxWidth: 400 }}
+                                        >
+                                        <div className="flex justify-between items-center p-4 border-b">
+                                            <span className="font-bold text-lg">Wallet</span>
+                                            <button
+                                            className="text-gray-500 hover:text-gray-800"
+                                            onClick={() => setWalletDropdownOpen(false)}
+                                            >
+                                            <X size={24} />
+                                            </button>
+                                        </div>
+                                        <div className="flex-1 overflow-y-auto p-4">
+                                            {/* Your wallet content here */}
+                                            <div className="mb-4">Wallet Menu</div>
+                                            
+                                            {/* Add more wallet actions/components as needed */}
+                                            <SwapComponents setBits={setBits}/>
+                                        </div>
+                                        </aside>
+                                    </>
+                                    )}
+                                </div>
+                                <div className="relative">
+                                    <button
+                                        className="text-gray-700 hover:text-green-500 p-1"
+                                        onClick={() => {
+                                            setUserDropdownOpen((v) => !v);
+                                            setWalletDropdownOpen(false); // close wallet dropdown if open
+                                        }}
+                                    >
+                                        <UserCircle2 size={24} />
+                                    </button>
+                                    {userDropdownOpen && (
+                                        <div
+                                            ref={userDropdownRef}
+                                            className="absolute right-0 mt-2 z-50 bg-white shadow-lg rounded-md w-48 p-2"
+                                        >
+                                            <p className="ml-4">{address?.slice(0, 6)}...{address?.slice(-4)}</p>
+                                            <hr className="my-3 mb-5 w-[90%] mx-auto border-t border-gray-200" />
+                                            <p className="ml-4 mb-2">{bits} bits</p>
+                                            <div onClick={handleLogout}>
+                                                <WalletDropdownDisconnect />    
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </>
                         )}
                     </div>
