@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const HowPage = () => {
   return (
-    <div className='w-full min-h-[460px] flex px-4 sm:px-8 md:px-12 lg:px-20'>
+    <div className='w-full min-h-[460px] flex'>
       <div className='w-full max-w-7xl mx-auto flex flex-col items-start justify-center py-8'>
         <h1 className='text-3xl sm:text-4xl font-bold'>How BYTE Works</h1>
 

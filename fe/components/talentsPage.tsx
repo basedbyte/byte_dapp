@@ -14,7 +14,7 @@ const categories = [
 
 const CategoryGrid = () => {
   return (
-    <div className="w-full px-4 py-4">
+    <div className="w-full">
         <div className='flex items-start mb-8'>
           <h1 className='text-[32px] font-bold'>Browse Talent By Category</h1>
         </div>

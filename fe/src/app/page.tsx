@@ -11,7 +11,7 @@ import Cards from "@components/cardPage";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen ">
-      <div className="sticky top-0 z-10 font-[family-name:var(--font-poppins)]">
+      <div className="sticky top-0 z-50 font-[family-name:var(--font-poppins)]">
         <Navbar />
       </div>
 
