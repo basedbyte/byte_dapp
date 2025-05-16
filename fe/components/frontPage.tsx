@@ -1,53 +1,73 @@
-import React from 'react';
-import Link from 'next/link';
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Onboarding = () => {
   return (
-    <div className="w-full min-h-[516px] bg-white px-4 sm:px-6 sm:pb-12 md:pb-16">
-      {/* Hero Section */}
-      <div className="max-w-full py-8 sm:py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
-        {/*Left*/}
-        <div className="space-y-4 sm:space-y-6 md:pb-0 pb-6">
-          <div className="flex items-center space-x-2">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-dark-green">
-            Find Talent. Post <br/>
-             Tasks. Get Paid in<br/> <span className='text-[#00E676]'>Crypto.</span>
-            </h1>
-          </div>
-          
-          <p className="text-gray-700 text-sm sm:text-base md:text-lg">
-          Connect with global clients, complete tasks, <br className="hidden sm:block" />
-          and get paid securely in cryptocurrency <br/>
-          all on a decentralized platform.  
+    <div className="relative w-full min-h-auto overflow-hidden">
+      {/* Green Gradient Background */}
+      <div
+        className="absolute inset-0 h-[351px] z-0 rounded-[40px]"
+        style={{
+          background:
+            "linear-gradient(to bottom, #00E676 45%, #61C791 73%, #BBF7D0 100%)",
+        }}
+      />
+
+      {/* Content Section */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+        {/* Text Section */}
+        <div className="text-center md:text-left">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#0E4F1F] leading-tight mb-20">
+            Earn Bounties. Post<br />
+            Tasks. Get Paid In<br />
+            <span className="text-[#BBF7D0]">Crypto.</span>
+          </h1>
+
+          <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed">
+            Connect With Global Clients, Complete Tasks, <br className="hidden sm:inline" />
+            And Get Paid Securely In Cryptocurrency <br />
+            All On A Decentralized Platform.
           </p>
-          
+
           {/* Search Bar */}
-          <div className="relative mt-4 sm:mt-6 md:mt-8">
-            <input 
-              type="text" 
-              placeholder="Search jobs, talent, or skills..." 
-              className="w-full py-2 sm:py-3 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-md"
+          <div className="relative max-w-full mx-auto md:mx-0 mt-4">
+            <input
+              type="text"
+              placeholder="Search jobs, talent, or skills..."
+              className="w-full py-3 pl-5 pr-12 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400 shadow-sm"
             />
-            <button className="absolute right-2 top-1 sm:top-1.5 bg-green-500 text-white p-1.5 sm:p-2 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-[#00E676] text-white p-2 rounded-full hover:bg-[#00cc68] transition">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
+                />
               </svg>
             </button>
           </div>
-          
-          {/* Employers CTA */}
-          <div className="flex justify-center mt-4">
-            <div className="text-center">
-              <p className="text-gray-600 text-xs sm:text-sm">
-                Employers? <Link href="/postjob" className="text-purple-600 font-medium">Post your job here</Link>
-              </p>
-            </div>
-          </div>
         </div>
-        
-        {/*Right*/}
-        <div className="bg-gray-200 rounded-lg w-full h-48 sm:h-64 md:h-full flex items-center justify-center shadow-md">
-          <p className="text-gray-500 text-sm sm:text-base">Platform Interface Preview</p>
+
+        {/* Image Section */}
+        <div className="flex justify-center md:justify-end">
+          <div className="w-full max-w-md sm:max-w-lg md:max-w-xl">
+            <Image
+              src="/assets/homeAssets/globe at home hahahlk 2 (1).png"
+              alt="Crypto Globe"
+              width={800}
+              height={800}
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
         </div>
       </div>
     </div>
