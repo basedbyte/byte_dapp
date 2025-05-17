@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '@components/navbar'
 import { MessageSquare, Clock, X } from 'lucide-react'
 import Image from 'next/image'
@@ -77,23 +77,56 @@ const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBounty, setSelectedBounty] = useState<Bounty | null>(null)
 
+  const getInitialBits = (address?: string) => {
+    if (typeof window === "undefined" || !address) return 0;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; bits_${address}=`);
+    if (parts.length === 2) return parseInt(parts.pop()?.split(';').shift() || "0", 10) || 0;
+    return 0;
+  };
+
+  const [bits, setBits] = useState(() => getInitialBits(address));
+
   const handleUnlock = (bounty: Bounty) => {
     setSelectedBounty(bounty)
     setIsModalOpen(true)
   }
+
+  function getCookie(name: string) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    return null;
+  }
+  function setCookie(name: string, value: string, days = 365) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+  }
+
+  useEffect(() => {
+    if (!address) return;
+    const cookieKey = `bits_${address}`;
+    const bitsFromCookie = getCookie(cookieKey);
+    setBits(bitsFromCookie ? parseInt(bitsFromCookie, 10) || 0 : 0);
+  }, [address]);
+
+  useEffect(() => {
+    if (!address) return;
+    const cookieKey = `bits_${address}`;
+    setCookie(cookieKey, bits.toString());
+  }, [bits, address]);
 
   const handlePayBits = () => {
     if (!address) {
       alert("Connect your wallet first!");
       return;
     }
-    const storedBits = Number(localStorage.getItem(`bits_${address}`) ?? "0");
-    if (storedBits < REQUIRED_BITS) {
+
+    setBits(prev => prev - REQUIRED_BITS);
+    if (bits < REQUIRED_BITS) {
       alert("Not enough bits to unlock this bounty.");
       return;
     }
-
-    localStorage.setItem(`bits_${address}`, (storedBits - REQUIRED_BITS).toString());
 
     setIsModalOpen(false);
     if (selectedBounty) {

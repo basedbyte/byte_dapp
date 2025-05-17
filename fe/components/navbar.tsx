@@ -16,7 +16,6 @@ import { useAccount } from 'wagmi';
 
 const Navbar = () => {
     const { isMenuOpen, toggleMenu } = useNavbar();
-    const [bits, setBits] = useState(0);
     const [mounted, setMounted] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalMode, setModalMode] = useState<'login' | 'signup'>('login');
@@ -28,17 +27,45 @@ const Navbar = () => {
     const router = useRouter();
     const { address } = useAccount();
 
-    useEffect(() => {
-        if (address) {
-            const storedBits = localStorage.getItem(`bits_${address}`);
-            setBits(storedBits ? parseInt(storedBits, 10) : 0);
-        }
-    }, [address]);
+    const getInitialBits = (address?: string) => {
+        if (typeof window === "undefined" || !address) return 0;
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; bits_${address}=`);
+        if (parts.length === 2) return parseInt(parts.pop()?.split(';').shift() || "0", 10) || 0;
+        return 0;
+    };
+
+    const [bits, setBits] = useState(() => getInitialBits(address));
 
     const handleLogout = () => {
         document.cookie = "authToken=; path=/; max-age=0";
         router.push("/");
     };
+
+    function getCookie(name: string) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+        return null;
+    }
+
+    function setCookie(name: string, value: string, days = 365) {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    }
+
+    useEffect(() => {
+        if (!address) return;
+        const cookieKey = `bits_${address}`;
+        const bitsFromCookie = getCookie(cookieKey);
+        setBits(bitsFromCookie ? parseInt(bitsFromCookie, 10) || 0 : 0);
+    }, [address]);
+
+    useEffect(() => {
+        if (!address) return;
+        const cookieKey = `bits_${address}`;
+        setCookie(cookieKey, bits.toString());
+    }, [bits, address]);
 
     useEffect(() => {
         setMounted(true);

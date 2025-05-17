@@ -2,17 +2,37 @@
 
 import { useParams, useSearchParams } from 'next/navigation';
 import Navbar from '@components/navbar';
-import React from 'react';
+import React, { useState } from 'react';
 import { MessageCircle, BriefcaseBusiness, MessageSquare  } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const BountyDetailsPage = () => {
   const { id } = useParams();
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const title = searchParams.get('title') || 'Untitled Bounty';
   const reward = searchParams.get('reward') || 'N/A';
   const due = searchParams.get('due') || 'N/A';
   const comments = searchParams.get('comments') || '0';
+
+  const [showModal, setShowModal] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [description, setDescription] = useState("");
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowModal(false);
+    alert("Your submission has been received and will be emailed to you successfully!");
+    setFile(null);
+    setDescription("");
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900 font-sans">
@@ -105,8 +125,65 @@ const BountyDetailsPage = () => {
               </div>
             </div>
             {/*change this for functionality*/}
-            <button className="w-full bg-[#1BA27A] hover:bg-[#158964] text-white font-semibold py-2 rounded">Apply</button>
+            <button
+              className="w-full bg-[#1BA27A] hover:bg-[#158964] text-white font-semibold py-2 rounded"
+              onClick={() => setShowModal(true)}
+            >
+              Apply
+            </button>
           </div>
+          {/* Modal */}
+          {showModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+              <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+                <h2 className="text-xl font-bold mb-2 text-center">Submit Your Work</h2>
+                <hr className="my-3 border-t border-gray-200" />
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-4">
+                    <label className="block font-semibold mb-1">Upload File</label>
+                    <input
+                      type="file"
+                      className="block w-full text-sm border border-gray-300 rounded px-3 py-2"
+                      onChange={handleFileChange}
+                      required
+                    />
+                    {file && (
+                      <p className="text-xs text-gray-500 mt-1">Selected: {file.name}</p>
+                    )}
+                  </div>
+                  <hr className="my-3 border-t border-gray-200" />
+                  <div className="mb-4">
+                    <label className="block font-semibold mb-1">Description</label>
+                    <textarea
+                      className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                      rows={4}
+                      value={description}
+                      onChange={e => setDescription(e.target.value)}
+                      placeholder="Describe your submission..."
+                      required
+                    />
+                  </div>
+                  <hr className="my-3 border-t border-gray-200" />
+                  <div className="flex justify-end gap-2">
+                    <button
+                      type="button"
+                      className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white font-semibold shadow"
+                      onClick={() => router.push('/')}
+                    >
+                      Confirm Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
 
           <div className="mb-10">
             <p className="font-bold text-xs mb-2">CONTACT</p>
